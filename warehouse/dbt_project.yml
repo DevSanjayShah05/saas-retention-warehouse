@@ -1,0 +1,32 @@
+name: 'cohort_and_ledger'
+version: '1.0.0'
+config-version: 2
+
+profile: 'cohort_and_ledger'
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+seed-paths: ["seeds"]
+snapshot-paths: ["snapshots"]
+test-paths: ["tests"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:
+  report_start_date: '2023-01-01'
+  report_end_date: '2026-06-30'
+
+models:
+  cohort_and_ledger:
+    staging:
+      +materialized: view
+      +schema: staging
+    marts:
+      +materialized: table
+      +schema: marts
+    analytics:
+      +materialized: view
+      +schema: analytics

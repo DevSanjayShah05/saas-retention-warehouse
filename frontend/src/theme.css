@@ -1,0 +1,129 @@
+/* Cohort & Ledger — "ledger book" theme: warm paper light mode / ink-navy
+   dark mode. Categorical series colors are drawn, in fixed order, from the
+   validated dataviz-skill default palette (re-validated against these
+   custom surfaces) -- deliberately NOT a naive red=bad/green=good mapping,
+   since that's a common colorblind-accessibility trap for financial
+   dashboards. Sign is always also carried by +/- and direct labels. */
+
+:root {
+  color-scheme: light;
+
+  /* surfaces */
+  --page-bg: #f2ede0;
+  --surface-1: #faf7f0;
+  --surface-2: #ffffff;
+  --border: rgba(27, 36, 48, 0.12);
+  --border-strong: rgba(27, 36, 48, 0.22);
+
+  /* ink */
+  --ink-primary: #1b2430;
+  --ink-secondary: #52514e;
+  --ink-muted: #898781;
+  --grid-line: #e1ddcd;
+  --axis-line: #c3c2b7;
+
+  /* brand accent (ledger gold) */
+  --brand: #a3711b;
+  --brand-strong: #7c5414;
+
+  /* categorical series -- fixed order, never reassigned by rank */
+  --series-new: #2a78d6;
+  --series-expansion: #eb6834;
+  --series-reactivation: #1baf7a;
+  --series-contraction: #eda100;
+  --series-churn: #e87ba4;
+  --series-flat: #008300;
+
+  /* sequential ramp (cohort retention heatmap), light -> dark */
+  --seq-100: #cde2fb;
+  --seq-150: #b7d3f6;
+  --seq-200: #9ec5f4;
+  --seq-250: #86b6ef;
+  --seq-300: #6da7ec;
+  --seq-350: #5598e7;
+  --seq-400: #3987e5;
+  --seq-450: #2a78d6;
+  --seq-500: #256abf;
+  --seq-550: #1c5cab;
+  --seq-600: #184f95;
+  --seq-650: #104281;
+  --seq-700: #0d366b;
+
+  /* status (fixed, never themed / never reused for series identity) */
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #d03b3b;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page-bg: #0d1015;
+    --surface-1: #12161d;
+    --surface-2: #171c24;
+    --border: rgba(232, 230, 222, 0.12);
+    --border-strong: rgba(232, 230, 222, 0.22);
+
+    --ink-primary: #e8e6de;
+    --ink-secondary: #c3c2b7;
+    --ink-muted: #8a8a86;
+    --grid-line: #262b33;
+    --axis-line: #383835;
+
+    --brand: #d4a03f;
+    --brand-strong: #e8b657;
+
+    --series-new: #3987e5;
+    --series-expansion: #d95926;
+    --series-reactivation: #199e70;
+    --series-contraction: #c98500;
+    --series-churn: #d55181;
+    --series-flat: #008300;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page-bg: #0d1015;
+  --surface-1: #12161d;
+  --surface-2: #171c24;
+  --border: rgba(232, 230, 222, 0.12);
+  --border-strong: rgba(232, 230, 222, 0.22);
+
+  --ink-primary: #e8e6de;
+  --ink-secondary: #c3c2b7;
+  --ink-muted: #8a8a86;
+  --grid-line: #262b33;
+  --axis-line: #383835;
+
+  --brand: #d4a03f;
+  --brand-strong: #e8b657;
+
+  --series-new: #3987e5;
+  --series-expansion: #d95926;
+  --series-reactivation: #199e70;
+  --series-contraction: #c98500;
+  --series-churn: #d55181;
+  --series-flat: #008300;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--page-bg);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+}
+
+#root {
+  min-height: 100vh;
+}

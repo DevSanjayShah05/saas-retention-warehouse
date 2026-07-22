@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+      - name: signup_date
+        tests: [not_null]
+
+  - name: stg_customers_history
+    columns:
+      - name: customer_id
+        tests: [not_null]
+      - name: version_no
+        tests: [not_null]
+      - name: effective_date
+        tests: [not_null]
+
+  - name: stg_plans_history
+    columns:
+      - name: plan_id
+        tests: [unique, not_null]
+      - name: tier
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Starter', 'Growth', 'Scale', 'Enterprise']
+      - name: monthly_price
+        tests: [not_null]
+
+  - name: stg_subscriptions
+    columns:
+      - name: subscription_id
+        tests: [unique, not_null]
+      - name: customer_id
+        tests: [not_null]
+      - name: status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['active', 'canceled', 'trial_expired']
+
+  - name: stg_plan_changes
+    columns:
+      - name: change_id
+        tests: [unique, not_null]
+      - name: subscription_id
+        tests: [not_null]
+
+  - name: stg_invoices
+    columns:
+      - name: invoice_id
+        tests: [unique, not_null]
+      - name: subscription_id
+        tests: [not_null]
+      - name: amount_due
+        tests: [not_null]
+
+  - name: stg_payments
+    columns:
+      - name: payment_id
+        tests: [unique, not_null]
+      - name: invoice_id
+        tests: [not_null]
+      - name: status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['succeeded', 'failed', 'refunded']
+
+  - name: stg_usage_monthly
+    columns:
+      - name: customer_id
+        tests: [not_null]

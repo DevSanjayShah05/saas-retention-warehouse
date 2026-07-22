@@ -1,0 +1,69 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: "SCD Type 2 customer dimension. One row per customer per attribute-version."
+    columns:
+      - name: customer_key
+        tests: [unique, not_null]
+      - name: customer_id
+        tests: [not_null]
+      - name: is_current
+        tests: [not_null]
+
+  - name: dim_plan
+    description: "SCD Type 2 plan dimension. One row per plan tier per price version (grandfathering)."
+    columns:
+      - name: plan_key
+        tests: [unique, not_null]
+      - name: plan_id
+        tests: [unique, not_null]
+
+  - name: dim_date
+    description: "Standard calendar dimension, one row per day across the reporting window."
+    columns:
+      - name: date_day
+        tests: [unique, not_null]
+
+  - name: int_subscription_segments
+    description: "Intermediate: piecewise MRR history per subscription (one row per plan segment)."
+    columns:
+      - name: subscription_id
+        tests: [not_null]
+      - name: mrr
+        tests: [not_null]
+
+  - name: fact_subscription_events
+    description: "Grain: customer x month. MRR movement classification (new/expansion/contraction/reactivation/churn)."
+    columns:
+      - name: subscription_event_id
+        tests: [unique, not_null]
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_id
+      - name: movement_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['new', 'expansion', 'contraction', 'reactivation', 'churn', 'flat']
+      - name: mrr
+        tests: [not_null]
+
+  - name: fact_invoices
+    description: "Grain: one row per invoice, with aggregated payment/refund outcome."
+    columns:
+      - name: invoice_id
+        tests: [unique, not_null]
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_id
+      - name: amount_due
+        tests: [not_null]

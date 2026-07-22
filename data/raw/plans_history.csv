@@ -1,0 +1,21 @@
+plan_id,plan_name,tier,billing_interval,monthly_price,effective_from,effective_to,is_current
+starter_monthly_v1,Starter (Monthly),Starter,monthly,29.0,2023-01-01,2024-06-30,False
+starter_annual_v1,Starter (Annual),Starter,annual,24.17,2023-01-01,2024-06-30,False
+starter_monthly_v2,Starter (Monthly),Starter,monthly,35.0,2024-07-01,2025-12-31,False
+starter_annual_v2,Starter (Annual),Starter,annual,29.17,2024-07-01,2025-12-31,False
+starter_monthly_v3,Starter (Monthly),Starter,monthly,39.0,2026-01-01,,True
+starter_annual_v3,Starter (Annual),Starter,annual,32.5,2026-01-01,,True
+growth_monthly_v1,Growth (Monthly),Growth,monthly,99.0,2023-01-01,2024-06-30,False
+growth_annual_v1,Growth (Annual),Growth,annual,82.5,2023-01-01,2024-06-30,False
+growth_monthly_v2,Growth (Monthly),Growth,monthly,119.0,2024-07-01,2025-12-31,False
+growth_annual_v2,Growth (Annual),Growth,annual,99.17,2024-07-01,2025-12-31,False
+growth_monthly_v3,Growth (Monthly),Growth,monthly,129.0,2026-01-01,,True
+growth_annual_v3,Growth (Annual),Growth,annual,107.5,2026-01-01,,True
+scale_monthly_v1,Scale (Monthly),Scale,monthly,299.0,2023-01-01,2024-12-31,False
+scale_annual_v1,Scale (Annual),Scale,annual,249.17,2023-01-01,2024-12-31,False
+scale_monthly_v2,Scale (Monthly),Scale,monthly,349.0,2025-01-01,,True
+scale_annual_v2,Scale (Annual),Scale,annual,290.83,2025-01-01,,True
+enterprise_monthly_v1,Enterprise (Monthly),Enterprise,monthly,899.0,2023-01-01,2025-05-31,False
+enterprise_annual_v1,Enterprise (Annual),Enterprise,annual,749.17,2023-01-01,2025-05-31,False
+enterprise_monthly_v2,Enterprise (Monthly),Enterprise,monthly,999.0,2025-06-01,,True
+enterprise_annual_v2,Enterprise (Annual),Enterprise,annual,832.5,2025-06-01,,True

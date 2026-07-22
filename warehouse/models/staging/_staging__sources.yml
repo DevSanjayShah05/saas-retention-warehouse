@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: "Raw OLTP-style tables loaded by scripts/load_raw_incremental.py"
+    tables:
+      - name: customers
+      - name: customers_history
+      - name: plans_history
+      - name: subscriptions
+      - name: plan_changes
+      - name: invoices
+      - name: payments
+      - name: usage_monthly

@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: cohort_retention
+    description: "Signup-month cohort retention curve (% of cohort still active, by months since signup)."
+  - name: mrr_waterfall_monthly
+    description: "Monthly MRR waterfall: new / expansion / contraction / reactivation / churn components."
+  - name: nrr_monthly
+    description: "Trailing-12-month Net Revenue Retention by base month."
+  - name: ltv_by_cohort
+    description: "Observed + formulaic LTV per signup cohort."

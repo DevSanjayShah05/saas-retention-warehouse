@@ -1,0 +1,8 @@
+# Seed generation + ELT pipeline (scripts/, warehouse/). See backend/requirements.txt
+# for the separate, minimal API server dependency set.
+numpy==2.4.6
+pandas==3.0.3
+python-dateutil==2.9.0.post0
+duckdb==1.5.4
+dbt-core==1.12.0
+dbt-duckdb==1.10.1
